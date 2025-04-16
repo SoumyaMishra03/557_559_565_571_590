@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, BackgroundTasks  # Import BackgroundTasks
 from pydantic import BaseModel
 import subprocess
 import uuid
@@ -39,8 +39,8 @@ def heartbeat(request: HeartbeatRequest):
     raise HTTPException(status_code=404, detail="Node not found")
 
 @app.get("/nodes")
-def list_nodes():
-    node_manager.check_health()
+def list_nodes(background_tasks: BackgroundTasks):  # Add BackgroundTasks parameter
+    background_tasks.add_task(node_manager.check_health)  # Run health check in the background
     return node_manager.list_nodes()
 
 @app.post("/launch_pod")

@@ -1,5 +1,6 @@
-fastapi
-uvicorn
+First run the following command for required thid party modules
+pip install fastapi pydantic requests uvicorn
+
 
 Commands:
 

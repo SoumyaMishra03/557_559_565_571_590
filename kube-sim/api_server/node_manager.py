@@ -43,5 +43,6 @@ class NodeManager:
                 return {"node_id": node_id, "pod_id": pod_id}
         return None
 
+
     def list_nodes(self):
         return self.nodes

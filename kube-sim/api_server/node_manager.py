@@ -20,7 +20,7 @@ class NodeManager:
         if node_id in self.nodes:
             self.nodes[node_id]["last_heartbeat"] = datetime.utcnow()
             self.nodes[node_id]["status"] = "healthy"
-            return True
+            return True 
         return False
 
     def check_health(self):
